@@ -1,0 +1,113 @@
+<p-messages [(value)]="msgs"></p-messages>
+
+<div class="text-center">
+
+  <h1>Crear persona</h1><br>
+  <a routerLink="/listarPersonas" class="btn btn-primary">Volver
+  </a>
+  <hr>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div> 
+    <div class="col-md-6">
+      
+        <form class="form-group" [formGroup]="form">
+
+          <!-- NOMBRE ---------------------------------------->
+          <div class="form-group">
+            <input formControlName="nombre"
+                   class="form-control"
+                   type="text"
+                   placeholder="Nombre">
+              <p-message severity="error" 
+                  *ngIf="form.get('nombre').hasError('required')" 
+                  text="El campo es requerido">
+              </p-message>
+              <p-message severity="error" 
+                         *ngIf="form.get('nombre').hasError('minlength') || form.get('nombre').hasError('maxlength')" 
+                         text="El campo no cumple la longitud esperada">
+              </p-message>
+              <p-message severity="error" 
+                *ngIf="form.get('nombre').hasError('pattern')" 
+                text="No es un nombre valido">
+              </p-message>
+          </div>
+
+
+          <!-- APELLIDO ---------------------------------------->
+          <div class="form-group">
+            <input formControlName="apellido"
+                   class="form-control"
+                   type="text"
+                   placeholder="Apellido">
+              <p-message severity="error" 
+                  *ngIf="form.get('apellido').hasError('required')" 
+                  text="El campo es requerido">
+              </p-message>
+          </div>        
+            
+
+          <!-- EMPRESA ---------------------------------------->
+          <div class="form-group">
+            <input formControlName="empresa"
+                   class="form-control"
+                   type="text"
+                   placeholder="Empresa">
+              <p-message severity="error" 
+                  *ngIf="form.get('empresa').hasError('required')" 
+                  text="El campo es requerido">
+              </p-message>
+            </div>       
+            
+
+          <!-- EMAIL ---------------------------------------->
+          <div class="form-group">
+            <input formControlName="email"
+                   class="form-control"
+                   type="text"
+                   placeholder="Email">
+              <p-message severity="error" 
+                  *ngIf="form.get('email').hasError('required')" 
+                  text="El campo es requerido">
+              </p-message>
+          </div>
+            
+
+          <!-- EDAD ---------------------------------------->
+          <div class="form-group">
+            <input formControlName="edad"                   
+                   type="text" 
+                   class="form-control" 
+                   placeholder="Edad">
+          <p-message severity="error" 
+            *ngIf="form.get('edad').hasError('required')" 
+            text="El campo es requerido">
+          </p-message>
+          </div>
+          
+
+          <!-- IP ---------------------------------------->
+          <div class="form-group">
+            <input formControlName="ip"
+                   class="form-control"
+                   type="text"
+                   placeholder="Ip 255.255.255.255">
+                   <p-message severity="error" 
+                   *ngIf="form.get('ip').hasError('required')" 
+                   text="El campo es requerido">
+                  </p-message>
+          </div>
+            
+            <button (click)="guardar();" class="btn btn-primary">Guardar</button>
+        </form><!-- fin formulario -->
+          
+    </div><!-- fin col-6 -->
+    <div class="col-md-3"></div>
+  </div>
+</div>
+
+
+
